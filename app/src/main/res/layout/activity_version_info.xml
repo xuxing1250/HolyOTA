@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_version_info"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.hojy.www.hojyupgrader163.activity.VersionInfoActivity">
+    <RelativeLayout
+        android:id="@+id/header_plan_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorOtaUpgradeBackground">
+
+        <com.hojy.www.hojyupgrader163.view.LVCircularCD
+            android:id="@+id/upgrade_info_lv_circularcd"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_marginTop="10dp"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/title_textview"
+            />
+        <Button
+            android:id="@+id/upgrade_info_apply_button"
+            android:layout_width="200dp"
+            android:layout_height="30dp"
+            android:layout_below="@id/upgrade_info_lv_circularcd"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:text="开始升级"
+            android:textColor="@color/colorOtaUpgradeFont"
+            android:background="@drawable/check_upgrade_button_selector"
+            />
+
+        <TextView
+            android:id="@+id/upgrade_info_prompt_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/upgrade_info_apply_button"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="7dp"
+            android:layout_marginBottom="10dp"
+            android:textColor="@color/colorOtaUpgradeFont"
+            android:textSize="11sp"
+            android:text="已是最新版本"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/upgrade_info_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_below="@id/header_plan_layout">
+
+        <TextView
+            android:id="@+id/upgrade_info_version"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="V4260R01C01S90"
+            />
+
+        <LinearLayout
+            android:id="@+id/upgrade_info_line"
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_below="@id/upgrade_info_version"
+            android:layout_marginTop="7dp"
+            android:background="@color/colorOtaUpgradeListDivider">
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/upgrade_info_description_header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/upgrade_info_line"
+            android:layout_marginTop="7dp"
+            android:text="更新日志"/>
+
+        <TextView
+            android:id="@+id/upgrade_info_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/upgrade_info_description_header"
+            android:layout_marginTop="4dp"
+            android:text="没有内容"
+            android:textSize="12sp"/>
+    </RelativeLayout>
+</RelativeLayout>

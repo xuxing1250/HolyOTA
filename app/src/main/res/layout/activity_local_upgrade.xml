@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_local_upgrade"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.hojy.www.hojyupgrader163.activity.LocalUPgradeActivity">
+
+    <RelativeLayout
+        android:id="@+id/local_upgrade_header_plan_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorOtaUpgradeBackground">
+
+        <TextView
+            android:id="@+id/local_upgrade_title_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="10dp"
+            android:textColor="@color/colorOtaUpgradeFont"
+            android:textSize="20sp"
+            android:text="本地升级"/>
+
+        <com.hojy.www.hojyupgrader163.view.LVGears
+            android:id="@+id/local_upgrade_lv_circularcd"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_marginTop="19dp"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/local_upgrade_title_textview"
+            />
+        <TextView
+            android:id="@+id/local_upgrade_prompt_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/local_upgrade_lv_circularcd"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="7dp"
+            android:layout_marginBottom="10dp"
+            android:textColor="@color/colorOtaUpgradeFont"
+            android:textSize="11sp"
+            android:text="已是最新版本"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_below="@id/local_upgrade_header_plan_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView android:id="@+id/local_upgrade_empty_imageview"
+            android:layout_width="84dp"
+            android:layout_height="84dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="15dp"
+            android:src="@drawable/empty"/>
+        <TextView android:id="@+id/local_upgrade_empty_prompt_textview"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/local_upgrade_empty_imageview"
+            android:layout_marginTop="10dp"
+            android:layout_centerHorizontal="true"
+            android:text="没有找到升级包，请下载升级包复制到SD卡的/hojydload或内部存储的/hojydload目录。"/>
+
+        <ListView
+            android:id="@+id/local_upgrade_package_listview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/colorOtaUpgradeInfoItem"
+            android:divider="@color/colorOtaUpgradeListDivider"
+            android:visibility="invisible"
+            android:dividerHeight="1px"/>
+
+     </RelativeLayout>
+</RelativeLayout>

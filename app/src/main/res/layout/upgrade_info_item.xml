@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="@color/colorOtaUpgradeInfoItem"
+    android:layout_height="54dp">
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true">
+        <TextView
+            android:id="@+id/title_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="17dp"
+            android:text="当前版本"
+            android:textSize="14sp"
+            android:textColor="@color/colorOtaUpgradeInfoFont"/>
+
+        <TextView
+            android:id="@+id/version_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:layout_alignLeft="@id/title_textview"
+            android:layout_below="@id/title_textview"
+            android:textColor="@color/colorOtaUpgradeInfoFont"
+            android:text="V4260R01C01S90"
+            android:textSize="11sp"/>
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/indicator_item_imageview"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginRight="10dp"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"
+        android:src="@drawable/right"/>
+
+</RelativeLayout>

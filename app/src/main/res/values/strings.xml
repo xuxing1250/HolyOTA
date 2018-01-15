@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">华域升级</string>
+    <string name="safe_hint">升级过程中，请勿断电！</string>    
+</resources>

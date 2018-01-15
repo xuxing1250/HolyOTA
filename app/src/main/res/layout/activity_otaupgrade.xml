@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_otaupgrade"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.hojy.www.hojyupgrader163.activity.OTAUpgradeActivity">
+   <RelativeLayout
+       android:id="@+id/opeartor_plan_layout"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:background="@color/colorOtaUpgradeBackground">
+
+        <TextView
+            android:id="@+id/title_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:textSize="20sp"
+            android:textColor="@color/colorOtaUpgradeFont"
+            android:text="163 模块升级" />
+
+        <com.hojy.www.hojyupgrader163.view.LVCircularCD
+            android:id="@+id/lv_circularcd"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_marginTop="40dp"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/title_textview"
+            />
+        <Button
+            android:id="@+id/check_upgrade_button"
+            android:layout_width="220dp"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:layout_below="@id/lv_circularcd"
+            android:background="@drawable/check_upgrade_button_selector"
+            android:text="检查更新"
+            android:textColor="@color/colorOtaUpgradeFont"/>
+
+       <TextView
+            android:id="@+id/prompt_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/check_upgrade_button"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="7dp"
+            android:layout_marginBottom="10dp"
+            android:textColor="@color/colorOtaUpgradeFont"
+            android:textSize="11sp"
+            android:text="已是最新版本"/>
+    </RelativeLayout>
+
+    <ListView
+        android:id="@+id/info_listview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorOtaUpgradeInfoItem"
+        android:divider="@color/colorOtaUpgradeListDivider"
+        android:dividerHeight="1px"
+        android:layout_below="@id/opeartor_plan_layout"
+        />
+
+</RelativeLayout>
