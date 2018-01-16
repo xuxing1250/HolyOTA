@@ -164,6 +164,10 @@ public class UploadManager {
 
     }
 
+    /**
+     * tongzhi activity chuanru shuju bing jinxing gengxin
+     */
+
     private void handlelocalUploadFirmware( ){
         Message message = new Message();
         message.what = 3;

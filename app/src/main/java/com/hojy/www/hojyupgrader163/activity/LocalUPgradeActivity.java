@@ -6,55 +6,33 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.os.Environment;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
-import android.widget.Toast;
+
 import android.view.WindowManager;
 import android.content.Context;
 import android.view.WindowManager.LayoutParams;
 import android.graphics.PixelFormat;
 import android.view.LayoutInflater;
-import android.os.SystemClock;
-import android.os.PowerManager;
 
 import com.hojy.www.hojyupgrader163.R;
 import com.hojy.www.hojyupgrader163.manager.UploadManager;
 import com.hojy.www.hojyupgrader163.model.Firmware;
-import com.hojy.www.hojyupgrader163.model.UpgradeInfo;
-import com.hojy.www.hojyupgrader163.network.HojyRequestManager;
-import com.hojy.www.hojyupgrader163.network.UploadUtil;
-import com.hojy.www.hojyupgrader163.utils.HojyLoger;
 import com.hojy.www.hojyupgrader163.utils.UpgradeFirmwareManager;
-import com.hojy.www.hojyupgrader163.utils.XMLDomService;
 import com.hojy.www.hojyupgrader163.view.LVGears;
-import com.yolanda.nohttp.rest.OnResponseListener;
-import com.yolanda.nohttp.rest.Response;
 
-
-import java.io.File;
-import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.LineNumberReader;
-import java.io.DataOutputStream;
+
 
 
 public class LocalUPgradeActivity extends Activity {
-
     private List<Firmware> lists;
     private List<Map<String, Object>> data;
     private SimpleAdapter adapter;
@@ -66,6 +44,8 @@ public class LocalUPgradeActivity extends Activity {
 	private TextView statusTextView;
 	private WindowManager wm;
     private UploadManager mManager;
+
+    private static final String TAG = "LocalUPgradeActivity";
 
     private Handler mHander = new Handler() {
         @Override
@@ -87,6 +67,11 @@ public class LocalUPgradeActivity extends Activity {
                     finish();
                     break;
                 case 3:
+
+
+                    /**
+                     * kaishi chulishuju
+                     */
                     lists = UpgradeFirmwareManager.getInstalce().getLocalFirmwares();
                     if (lists.size() > 0){
                         listView.setVisibility(View.VISIBLE);
@@ -95,6 +80,10 @@ public class LocalUPgradeActivity extends Activity {
                                 new int[]{R.id.title_textview,R.id.version_textview});
                         listView.setAdapter(adapter);
                         setListViewOnItemClick();
+
+                        /**
+                         * he xin daima
+                         */
                         mManager.uploadFirmware(lists.get(0));
                     }else {
                         listView.setVisibility(View.INVISIBLE);
@@ -113,8 +102,13 @@ public class LocalUPgradeActivity extends Activity {
         promptTextView = (TextView) findViewById(R.id.local_upgrade_prompt_textview);
         mManager = new UploadManager(this, mHander);
 		mManager.startCopyThread();
+
 		createSafeWindow();
 	    lists = UpgradeFirmwareManager.getInstalce().getLocalFirmwares();
+
+        Log.d(TAG, "onCreate: ----------------------------");
+        createSafeWindow();
+        lists = UpgradeFirmwareManager.getInstalce().getLocalFirmwares();
 	        if (lists.size() > 0){
 	            listView.setVisibility(View.VISIBLE);
 	            data = getData();
