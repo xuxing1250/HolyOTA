@@ -5,7 +5,9 @@
 
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
     <uses-permission android:name="android.permission.SYSTEM_OVERLAY_WINDOW" />
-    <user-permission android:name="android.permission.DEVICE_POWER"/>
+
+    <user-permission android:name="android.permission.DEVICE_POWER" />
+
     <application
         android:name=".application.HojyApplication"
         android:allowBackup="true"
@@ -22,18 +24,14 @@
         <activity
             android:name=".activity.MainActivity"
             android:launchMode="singleTask"
-            android:screenOrientation="portrait">
-
-        </activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activity.OTAUpgradeActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.NoTitleBar">
-
-        </activity>
+            android:theme="@android:style/Theme.NoTitleBar" />
         <activity
-            android:name=".activity.LocalUPgradeActivity"
+            android:name=".activity.ModeChooseActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait">
             <intent-filter>
@@ -42,9 +40,17 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".activity.VersionInfoActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
+        <activity android:name=".activity.LocalUPgradeActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            >
+
+        </activity>
+        <activity android:name=".activity.ManualModeActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait">
 

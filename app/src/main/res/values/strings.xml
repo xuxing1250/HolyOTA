@@ -1,4 +1,31 @@
 <resources>
     <string name="app_name">华域升级</string>
-    <string name="safe_hint">升级过程中，请勿断电！</string>    
+    <string name="safe_hint">升级过程中，请勿断电！</string>
+    <string name="hello">Hello World, FirmwareToolActivity!</string>
+    <string name="start">开始</string>
+    <string name="start_hint">点击【开始】按钮烧写模块版本</string>
+    <string name="progress_default">未开始</string>
+    <string name="pack_file_hint">请选择固件位置</string>
+    <string name="pack_file_path">固件位置 : </string>
+    <string name="select_pack_file">点击选择固件位置</string>
+    <string name="select_pack_file_not_exist">固件不存在，请重新选择!</string>
+    <string name="time_used_duration">已用时间 : </string>
+    <string name="version_err">模块版本未识别</string>
+
+    <string name="hint_request_bootmode">等待进入升级模式...</string>
+    <string name="hint_bootmode_ready">升级模式准备好</string>
+    <string name="hint_parse_firmware">解析固件包</string>
+    <string name="hint_prepare_download">解析完成，准备下载</string>
+    <string name="hint_download_fdl1">下载 FDL1</string>
+    <string name="hint_download_fdl2">下载 FDL2</string>
+    <string name="hint_download_nv">下载 NV</string>
+    <string name="hint_download_bootloader">下载 BootLoader</string>
+    <string name="hint_download_kernalimg">下载 KernalImage</string>
+    <string name="hint_download_dsp">下载 DSP</string>
+    <string name="hint_download_controldata">下载 ControlData</string>
+    <string name="hint_download_over">下载完成</string>
+    <string name="hint_rebooting_module">正在重启模块</string>
+    <string name="hint_download_error">下载出错!</string>
+    <string name="hint_module_not_power_on">请先打开模块! </string>
+    <string name="warning_dont_touch">"3G 固件升级中，请勿操作。稍后会自动重启。"</string>
 </resources>

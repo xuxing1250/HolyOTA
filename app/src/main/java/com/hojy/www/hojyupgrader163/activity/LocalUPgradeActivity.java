@@ -84,7 +84,7 @@ public class LocalUPgradeActivity extends Activity {
         promptTextView = (TextView) findViewById(R.id.local_upgrade_prompt_textview);
 		//runShellCommandThread.start();
 		copyFilesthread.start();
-		createSafeWindow();
+		//createSafeWindow();
 
 	    lists = UpgradeFirmwareManager.getInstalce().getLocalFirmwares();
 
@@ -268,11 +268,11 @@ public class LocalUPgradeActivity extends Activity {
 
     private void handleLocalUpgradeFail(String prompt){
         //Toast.makeText(LocalUPgradeActivity.this,prompt,Toast.LENGTH_SHORT).show();
-        statusTextView.setText(prompt); 
-		localUpgradeCouterClear();
-        localUpgradeCheckApplyCountClear();
-        lvGears.stopAnim();
-		finish();
+//        statusTextView.setText(prompt);
+//		localUpgradeCouterClear();
+//        localUpgradeCheckApplyCountClear();
+//        lvGears.stopAnim();
+//		finish();
     }
 	
     private void handleLocalUpgradeSuccess(String prompt){
@@ -443,6 +443,7 @@ public class LocalUPgradeActivity extends Activity {
 	
     private void handlelocalUploadFirmware( ){		
 		lists = UpgradeFirmwareManager.getInstalce().getLocalFirmwares();
+        android.util.Log.e("lishuangwei", "LocalUPgradeActivity : lists  = " + lists.size());
         if (lists.size() > 0){
             listView.setVisibility(View.VISIBLE);
             data = getData();
