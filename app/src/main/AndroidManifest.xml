@@ -44,17 +44,14 @@
             android:name=".activity.VersionInfoActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait" />
-        <activity android:name=".activity.LocalUPgradeActivity"
+        <activity
+            android:name=".activity.LocalUPgradeActivity"
             android:launchMode="singleTask"
-            android:screenOrientation="portrait"
-            >
-
-        </activity>
-        <activity android:name=".activity.ManualModeActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.ManualModeActivity"
             android:launchMode="singleTask"
-            android:screenOrientation="portrait">
-
-        </activity>
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>
