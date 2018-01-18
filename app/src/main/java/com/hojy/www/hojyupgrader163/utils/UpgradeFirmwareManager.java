@@ -98,4 +98,16 @@ public class UpgradeFirmwareManager {
         }
         return  lists;
     }
+
+    public Firmware getFirmwareFromPath(String path) {
+        if (path == null) {
+            return null;
+        }
+        Firmware firmware = new Firmware();
+        File filetmp = new File(path);
+        firmware.setName(filetmp.getName());
+        firmware.setPath(filetmp.getAbsolutePath());
+        firmware.setSize(filetmp.length());
+        return firmware;
+    }
 }

@@ -26,6 +26,7 @@ import android.widget.Toast;
 import com.hojy.www.hojyupgrader163.R;
 import com.hojy.www.hojyupgrader163.manager.UploadManager;
 import com.hojy.www.hojyupgrader163.model.Firmware;
+import com.hojy.www.hojyupgrader163.utils.UpgradeFirmwareManager;
 
 import java.io.File;
 import java.util.regex.Pattern;
@@ -51,25 +52,39 @@ public class ManualModeActivity extends AppCompatActivity implements View.OnClic
                  * start update
                  */
                 case 0:
+                    Log.d(TAG, "handleMessage: ---------start update");
                     break;
                 /**
                  * successed
                  */
                 case 1:
+                    String obj = (String) msg.obj;
+                    statusTextView.setText(obj);
+                    Log.d(TAG, "handleMessage: ----successed--------" + obj);
 
                     break;
                 /**
                  * failed
                  */
                 case 2:
+                    Log.d(TAG, "handleMessage: -----------failed");
+                    Log.d(TAG, "handleMessage: ---------finish");
+                    statusTextView.setText("升级失败");
+                    try {
+                        Thread.sleep(3000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    finish();
                     break;
                 /**
                  * do update
                  * moni quju
                  */
                 case 3:
-                    Firmware firmware = new Firmware();
+                    Firmware firmware = UpgradeFirmwareManager.getInstalce().getFirmwareFromPath(mPackFilePath);
                     mManager.uploadFirmware(firmware);
+                    Log.d(TAG, "handleMessage: do update---");
                     break;
             }
 

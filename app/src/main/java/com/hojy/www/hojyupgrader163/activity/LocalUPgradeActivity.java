@@ -67,8 +67,6 @@ public class LocalUPgradeActivity extends Activity {
                     finish();
                     break;
                 case 3:
-
-
                     /**
                      * kaishi chulishuju
                      */
@@ -80,11 +78,11 @@ public class LocalUPgradeActivity extends Activity {
                                 new int[]{R.id.title_textview,R.id.version_textview});
                         listView.setAdapter(adapter);
                         setListViewOnItemClick();
-
+                        Log.d(TAG, "handleMessage: ------------- size" + lists.size());
                         /**
-                         * he xin daima
+                         * he xin code
                          */
-                        mManager.uploadFirmware(lists.get(0));
+//                        mManager.uploadFirmware(lists.get(0));
                     }else {
                         listView.setVisibility(View.INVISIBLE);
                     }
@@ -103,11 +101,10 @@ public class LocalUPgradeActivity extends Activity {
         mManager = new UploadManager(this, mHander);
 		mManager.startCopyThread();
 
-		createSafeWindow();
 	    lists = UpgradeFirmwareManager.getInstalce().getLocalFirmwares();
 
         Log.d(TAG, "onCreate: ----------------------------");
-        createSafeWindow();
+//        createSafeWindow();
         lists = UpgradeFirmwareManager.getInstalce().getLocalFirmwares();
 	        if (lists.size() > 0){
 	            listView.setVisibility(View.VISIBLE);

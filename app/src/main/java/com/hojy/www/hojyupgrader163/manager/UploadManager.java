@@ -6,6 +6,7 @@ import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
 import android.os.PowerManager;
+import android.util.Log;
 import android.view.View;
 import android.widget.SimpleAdapter;
 
@@ -40,6 +41,10 @@ public class UploadManager {
     private int localUpgradeCheckCount = 0;
     private int localUpgradeCheckApplyCount = 0;
 
+    public static final int UPDATE_START = 10;
+    public static final int UPDATE_SECCESSED = 11;
+    public static final int UPDATE_SUCCESSED_REBOOT = 12;
+
     public UploadManager(Context context, Handler handler) {
         mContext = context;
         acHandler = handler;
@@ -58,7 +63,7 @@ public class UploadManager {
 
         @Override
         public void onUploadProcess(int uploadSize) {
-
+            Log.d("ManualActiivity", "onUploadProcess: -------" + uploadSize);
         }
 
         @Override
@@ -97,7 +102,7 @@ public class UploadManager {
                 }
 
             } else if(upgradeInfo.getApplyErro() == 2 || upgradeInfo.getApplyErro() == 3){
-                handleLocalUpgradeSuccess("开始升级...");
+                handleLocalUpgradeSuccess(UPDATE_START);
                 checkUpdateDoneThread.start();
             }else if (upgradeInfo.getApplyErro() == 4){
                 if(localUpgradeCheckApplyCountReachMax() == true){
@@ -117,7 +122,7 @@ public class UploadManager {
         public void onFailed(int what, Response<String> response) {
             //获取升级信息失败，设备在重启，认为开始升级
             HojyLoger.d("VersionInfoActivity","localUpgradeApplyResultListener-> onFailed :"+response);
-            handleLocalUpgradeSuccess("开始升级!");
+            handleLocalUpgradeSuccess(UPDATE_START);
             checkUpdateDoneThread.start();
         }
         @Override
@@ -152,14 +157,23 @@ public class UploadManager {
     }
 
 
-    private void handleLocalUpgradeSuccess(String prompt){
+    private void handleLocalUpgradeSuccess(int type){
         //Toast.makeText(LocalUPgradeActivity.this,prompt,Toast.LENGTH_SHORT).show();
-
         localUpgradeCouterClear();
         localUpgradeCheckApplyCountClear();
         Message message = new Message();
         message.what = 1;
-        message.obj = prompt;
+        switch (type) {
+            case UPDATE_START:
+                message.obj = "开始升级";
+                break;
+            case UPDATE_SECCESSED:
+                message.obj = "上传成功";
+                break;
+            case UPDATE_SUCCESSED_REBOOT:
+                message.obj = "升级成功，等待系统重启......";
+                break;
+        }
         acHandler.sendMessage(message);
 
     }
@@ -229,11 +243,12 @@ public class UploadManager {
             }else if(msg.what == 3){
                 handleLocalUpgradeFail("上传失败");
             }else if(msg.what == 4){
-                handleLocalUpgradeSuccess("上传成功");
+                handleLocalUpgradeSuccess(UPDATE_SECCESSED);
             }else if(msg.what == 5){
                 handlelocalUploadFirmware();
             }else if(msg.what == 6){
-                handleLocalUpgradeSuccess("升级完成，等待系统重启!");
+                Log.d("ManualActivity", "handleMessage:-------------升级成功 ");
+                handleLocalUpgradeSuccess(UPDATE_SUCCESSED_REBOOT);
             }
             super.handleMessage(msg);
         }
