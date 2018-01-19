@@ -7,6 +7,7 @@ import android.graphics.PixelFormat;
 import android.net.Uri;
 import android.os.Handler;
 import android.os.Message;
+import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.telephony.TelephonyManager;
@@ -101,6 +102,7 @@ public class ManualModeActivity extends AppCompatActivity implements View.OnClic
         mStart = (Button) findViewById(R.id.btn_start);
         mchoose.setOnClickListener(this);
         mStart.setOnClickListener(this);
+
 
         mPackFileHint = (TextView) findViewById(R.id.txt_packFileHint);
     }

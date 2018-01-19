@@ -54,22 +54,26 @@ public class LocalUPgradeActivity extends Activity {
                 case 0:
                     lvGears.startAnim();
                     promptTextView.setText("正在升级，请勿断电!");
+                    Log.d(TAG, "handleMessage: -------start update");
                     break;
                 case 1:
                     String success = (String) msg.obj;
                     statusTextView.setText(success);
                     lvGears.stopAnim();
+                    Log.d(TAG, "handleMessage: --------successed-------" + success);
                     break;
                 case 2:
                     String failed = (String) msg.obj;
                     statusTextView.setText(failed);
                     lvGears.stopAnim();
+                    Log.d(TAG, "handleMessage: -----------failed---------" + failed);
                     finish();
                     break;
                 case 3:
                     /**
                      * kaishi chulishuju
                      */
+                    Log.d(TAG, "handleMessage: -------------start load");
                     lists = UpgradeFirmwareManager.getInstalce().getLocalFirmwares();
                     if (lists.size() > 0){
                         listView.setVisibility(View.VISIBLE);
@@ -82,7 +86,7 @@ public class LocalUPgradeActivity extends Activity {
                         /**
                          * he xin code
                          */
-//                        mManager.uploadFirmware(lists.get(0));
+                        mManager.uploadFirmware(lists.get(0));
                     }else {
                         listView.setVisibility(View.INVISIBLE);
                     }
@@ -104,7 +108,7 @@ public class LocalUPgradeActivity extends Activity {
 	    lists = UpgradeFirmwareManager.getInstalce().getLocalFirmwares();
 
         Log.d(TAG, "onCreate: ----------------------------");
-//        createSafeWindow();
+        createSafeWindow();
         lists = UpgradeFirmwareManager.getInstalce().getLocalFirmwares();
 	        if (lists.size() > 0){
 	            listView.setVisibility(View.VISIBLE);

@@ -1,5 +1,7 @@
 package com.hojy.www.hojyupgrader163.network;
 
+import android.util.Log;
+
 import java.io.DataOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
@@ -116,13 +118,19 @@ public class UploadUtil {
         new Thread(new Runnable() { //开启线程上传文件
             @Override
             public void run() {
+//                boolean isFailed = false;
+//                int count = 0;
+//                while (!isFailed) {
+//                    Log.d(TAG, "run: --------------Threadcount" + count++);
+//                    isFailed = toUploadFile(file, fileKey, RequestURL, param);
+//                }
                 toUploadFile(file, fileKey, RequestURL, param);
             }
         }).start();
 
     }
 
-    private void toUploadFile(File file, String fileKey, String RequestURL,
+    private boolean toUploadFile(File file, String fileKey, String RequestURL,
                               Map<String, String> param) {
         String result = null;
         requestTime= 0;
@@ -212,6 +220,7 @@ public class UploadUtil {
  * 获取响应码 200=成功 当响应成功，获取响应的流
  */
             int res = conn.getResponseCode();
+
             responseTime = System.currentTimeMillis();
             this.requestTime = (int) ((responseTime-requestTime)/1000);
             HojyLoger.e(TAG, "response code:" + res);
@@ -227,20 +236,20 @@ public class UploadUtil {
                 HojyLoger.e(TAG, "result : " + result);
                 sendMessage(UPLOAD_SUCCESS_CODE, "上传结果："
                         + result);
-                return;
+                return true;
             } else {
                 HojyLoger.e(TAG, "request error");
                 sendMessage(UPLOAD_SERVER_ERROR_CODE,"上传失败：code=" + res);
-                return;
+                return false;
             }
         } catch (MalformedURLException e) {
             sendMessage(UPLOAD_SERVER_ERROR_CODE,"上传失败：error=" + e.getMessage());
             e.printStackTrace();
-            return;
+            return false;
         } catch (IOException e) {
             sendMessage(UPLOAD_SERVER_ERROR_CODE,"上传失败：error=" + e.getMessage());
             e.printStackTrace();
-            return;
+            return false;
         }
     }
 

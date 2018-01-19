@@ -30,10 +30,9 @@ public class UpgradeFirmwareManager {
         List<Firmware> lists ;
         //获取SD上的固件
         lists = getSDFirmwares();
-        android.util.Log.e("lishuangwei", "UpgradeFirmwareManager : Sd-lists  = " + lists.size() );
+
         //获取root上的固件
         lists.addAll(getRootFirmwares());
-        android.util.Log.e("lishuangwei", "UpgradeFirmwareManager : root-lists  = " + lists.size() );
         return  lists;
     }
 

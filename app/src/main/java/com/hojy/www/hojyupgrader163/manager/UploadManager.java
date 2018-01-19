@@ -7,8 +7,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.os.PowerManager;
 import android.util.Log;
-import android.view.View;
-import android.widget.SimpleAdapter;
+
 
 import com.hojy.www.hojyupgrader163.R;
 import com.hojy.www.hojyupgrader163.model.Firmware;
@@ -63,7 +62,6 @@ public class UploadManager {
 
         @Override
         public void onUploadProcess(int uploadSize) {
-            Log.d("ManualActiivity", "onUploadProcess: -------" + uploadSize);
         }
 
         @Override
@@ -81,6 +79,7 @@ public class UploadManager {
         @Override
         public void onSucceed(int what, Response<String> response) {
             String result = response.get();
+            Log.d("UploadManager", "onSucceed: -------result" + result);
             try {
                 result = new String(result.getBytes("utf-8"));
                 HojyLoger.d("VersionInfoActivity","localUpgradeApplyResultListener-> onSucceed result:"+result);
@@ -90,6 +89,7 @@ public class UploadManager {
                 return;
             }
             upgradeInfo = XMLDomService.parseApplyXml(result);
+            Log.d("UploadManager", "onSucceed: -----------------upgradeInfo.getApplyErro()" +upgradeInfo.getApplyErro());
             if(upgradeInfo.getApplyErro() == 0 || upgradeInfo.getApplyErro() == 1){
 
                 localUpgradeCouterIncrease();
