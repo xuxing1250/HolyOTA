@@ -1,18 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
+    android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#585858"
     tools:context="com.hojy.www.hojyupgrader163.activity.ModeChooseActivity">
     <Button
         android:id="@+id/bt_auto"
-        android:text="Auto Mode"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_weight="1"
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="40dp"
+        android:layout_marginLeft="90dp"
+        android:layout_marginRight="45dp"
+        android:text="自动模式"
+        android:textSize="24sp"
+        android:background="@drawable/btn_bottom_confirm_bg"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent" />
     <Button
+        android:layout_weight="1"
+        android:layout_marginLeft="45dp"
+        android:layout_marginRight="90dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="40dp"
         android:id="@+id/bt_manual"
-        android:text="Manual Mode"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:text="手动模式"
+        android:textSize="24sp"
+        android:background="@drawable/btn_bottom_confirm_bg"
+
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent" />
 </LinearLayout>
