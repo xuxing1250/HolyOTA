@@ -57,6 +57,10 @@ public class UploadManager {
     UploadUtil.OnUploadProcessListener onUploadProcessListener = new UploadUtil.OnUploadProcessListener() {
         @Override
         public void onUploadDone(int responseCode, String message) {
+            //上传成功
+            Message msg = new Message();
+            msg.what = 4;
+            handler.sendMessage(msg);
             HojyLoger.d("LocalUPgradeActivity","onUploadDone-> responseCore:"+responseCode+"  message:"+message);
         }
 
@@ -163,15 +167,19 @@ public class UploadManager {
         localUpgradeCheckApplyCountClear();
         Message message = new Message();
         message.what = 1;
+
         switch (type) {
             case UPDATE_START:
                 message.obj = "开始升级";
+                message.arg1 = 1;
                 break;
             case UPDATE_SECCESSED:
                 message.obj = "上传成功";
+                message.arg1 = 2;
                 break;
             case UPDATE_SUCCESSED_REBOOT:
                 message.obj = "升级成功，等待系统重启......";
+                message.arg1 = 3;
                 break;
         }
         acHandler.sendMessage(message);

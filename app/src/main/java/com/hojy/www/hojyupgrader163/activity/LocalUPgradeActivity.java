@@ -57,9 +57,13 @@ public class LocalUPgradeActivity extends Activity {
                     Log.d(TAG, "handleMessage: -------start update");
                     break;
                 case 1:
+
                     String success = (String) msg.obj;
+                    int i = msg.arg1;
+                    if (i == 3) {
+                        lvGears.stopAnim();
+                    }
                     statusTextView.setText(success);
-                    lvGears.stopAnim();
                     Log.d(TAG, "handleMessage: --------successed-------" + success);
                     break;
                 case 2:
